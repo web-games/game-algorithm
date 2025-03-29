@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./img1.png" style="width:200px;height:200px;border:1px solid black;" alt="">
+    <script>
+      function calcHypotenuse(x1, y1, x2, y2) {
+        let x = x2 - x1
+        let y = y2 - y1
+
+        let distance = Math.sqrt((x * x) + (y * y))
+
+        return Math.abs(distance)
+      }
+
+      function getTriangleArea(x1, y1, x2, y2, x3, y3) {
+        let a = calcHypotenuse(x1, y1, x2, y2)
+        let b = calcHypotenuse(x2, y2, x3, y3)
+        let c = calcHypotenuse(x3, y3, x1, y1)
+
+        // console.log(`a=${a}, b=${b}, c=${c}`)
+
+        let p = (a + b + c) / 2
+
+        let S = Math.sqrt(p * (p - a) * (p - b) * (p - c))
+
+        return S
+      }
+
+      // let A = {x: 0, y: 0}
+      // let B = {x: 10, y: 0}
+      // let C = {x: 5, y: -5}
+
+      let A = {x: 0, y: 200}
+      let B = {x: 190, y: 190}
+      let C = {x: 200, y: 0}
+      let S = getTriangleArea(A.x, A.y, B.x, B.y, C.x, C.y)
+      console.log("S=", S)
+
+      document.addEventListener('mousemove', (event) => {
+        let M = {x: event.x, y: event.y}
+
+        let S1 = getTriangleArea(A.x, A.y, B.x, B.y, M.x, M.y)
+        let S2 = getTriangleArea(B.x, B.y, C.x, C.y, M.x, M.y)
+        let S3 = getTriangleArea(C.x, C.y, A.x, A.y, M.x, M.y)
+        let T = S1 + S2 + S3
+        // console.log("T=", T)
+        if (Math.abs(T - S) < 0.0001) {
+          console.log('true')
+        } else {
+          console.log('false')
+        }
+      })
+    </script>
+  </body>
+</html>

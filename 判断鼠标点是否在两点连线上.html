@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+<script>
+	(function () {
+		const app = new PIXI.Application({width: 800, height: 600, backgroundColor: 0x1099bb})
+		document.body.appendChild(app.view)
+		var stage = app.stage
+
+		var line = new PIXI.Graphics()
+		line.lineStyle(10, 0xFFBD01, 1)
+		line.moveTo(0, 0)
+		line.lineTo(100, 100)
+		stage.addChild(line)
+		line.x = 100
+		line.y = 100
+
+		var point1 = new PIXI.Graphics()
+		point1.beginFill(0xDE3249)
+		point1.drawRect(0, 0, 10, 10)
+		point1.endFill()
+		point1.x = 100
+		point1.y = 100
+		stage.addChild(point1)
+		point1.cursor = 'pointer'
+		point1.interactive = true
+		point1.hitArea = new PIXI.Rectangle(0, 0, 10, 10)
+		point1.on('pointerdown', ()=>{
+			console.log('pointerdown point1');
+    });
+
+		var p2 = new PIXI.Graphics()
+		p2.beginFill(0xDE3249)
+		p2.drawRect(0, 0, 10, 10)
+		p2.endFill()
+		p2.x = 200
+		p2.y = 200
+		stage.addChild(p2)
+	}())
+</script>

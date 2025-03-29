@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //1.X轴坐标之差的平方加上Y轴坐标之差的平方，然后对平方和开根号就是这两点间的距离
+      //2.求出三角形的三边长a，b，c后，令p = (a+b+c)/2
+      //3.再套入海伦公式就可以求出三角形的面积S :S = sqrt(p*(p-a)*(p-b)*(p-c))方法
+
+      function calcHypotenuse(x1, y1, x2, y2) {
+        let x = x2 - x1
+        let y = y2 - y1
+
+        let distance = Math.sqrt((x * x) + (y * y))
+
+        return Math.abs(distance)
+      }
+
+      let A = {x: 0, y: 0}
+      let B = {x: 10, y: 0}
+      let C = {x: 5, y: -5}
+
+      let h = 5
+      let a = calcHypotenuse(A.x, A.y, C.x, C.y)
+      let b = calcHypotenuse(C.x, C.y, B.x, B.y)
+      let c = calcHypotenuse(A.x, A.y, B.x, B.y) // 底边长
+      let p = (a + b + c) / 2
+
+      console.log(`a=${a}, b=${b}, c=${c}`)
+
+      let S1 = (c * h) / 2
+      console.log("方法1：面积=底×高÷2 S=", S1)
+
+      let S2 = Math.sqrt(p * (p - a) * (p - b) * (p - c))
+      console.log("方法2：海伦公式     S=", S2)
+    </script>
+  </body>
+</html>

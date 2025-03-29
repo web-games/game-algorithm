@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ff0000;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./210_344_45f.jpg" alt="">
+    <div style="width:100px;height:5px;transform: rotate(45deg)"></div>
+    <script>
+      function getAngle (x1, y1, x2, y2, bo) {
+        let p1 = {x: x1, y: y1};
+        let p2 = {x: x2, y: y2};
+
+        let radian = Math.atan2((p2.y - p1.y), (p2.x - p1.x)); // 弧度
+
+        let angle = radian * (180 / Math.PI);
+
+        return bo ? radian : angle;
+      }
+
+      console.log(getAngle(0, 0, 100, 100, false));
+      console.log(getAngle(0, 0, 100, 100, true));
+    </script>
+  </body>
+</html>

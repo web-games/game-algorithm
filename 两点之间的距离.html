@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function getDistance(x1, y1, x2, y2) {
+        let p1 = {x: x1, y: y1}
+        let p2 = {x: x2, y: y2}
+
+        return Math.abs(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)))
+      }
+
+      console.log(getDistance(10, 0, 101, 101))
+
+      function calcHypotenuse(x1, y1, x2, y2) {
+        let x = x2 - x1
+        let y = y2 - y1
+
+        let distance = Math.sqrt((x * x) + (y * y))
+
+        return Math.abs(distance)
+      }
+
+      console.log(calcHypotenuse(10, 0, 101, 101))
+    </script>
+  </body>
+</html>

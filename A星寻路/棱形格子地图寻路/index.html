@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RPG游戏</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../assets/lib/gsap/TweenMax.min.js"></script>
+    <!--<script src="../../assets/lib/pixi/pixi-4.5.1.min.js"></script>-->
+    <script src="../assets/lib/pixi/pixi-5.1.3.min.js"></script>
+    <script src="./AStar.js"></script>
+    <script src="./Game.js"></script>
+    <script>
+      let kuangAlpha = 0.01
+      let kuangLineColor = 0xcccccc
+      let stageWidth = document.documentElement.clientWidth || document.body.clientWidth
+      let stageHeight = document.documentElement.clientHeight || document.body.clientHeight
+      let mapWidth = 2880
+      let mapHeight = 1440
+      let game = new Game({
+        width: stageWidth,
+        height: stageHeight,
+        backgroundColor: 0x3433cc
+      })
+    </script>
+  </body>
+</html>

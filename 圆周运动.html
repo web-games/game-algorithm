@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+</html>
+<script src="../assets/lib/pixi/pixi-4.5.1.min.js"></script>
+<script>
+  // https://zhidao.baidu.com/question/372090906049398684.html
+  // https://segmentfault.com/a/1190000008417444
+  // 角度=180°×弧度÷π
+  // 弧度=角度×π÷180°
+  (function () {
+    var renderer = PIXI.autoDetectRenderer(800, 600, {backgroundColor: 0x1099bb});
+    document.body.appendChild(renderer.view);
+
+    var stage = new PIXI.Container();
+
+    var graphics = new PIXI.Graphics();
+    graphics.beginFill(0xDE3249);
+    graphics.drawRect(0, 0, 10, 10);
+    graphics.endFill();
+    graphics.x = 400;
+    graphics.y = 300;
+    stage.addChild(graphics);
+
+    var line = new PIXI.Graphics();
+    line.lineStyle(10, 0xFFBD01, 1);
+    line.moveTo(10, 10);
+    stage.addChild(line);
+
+    var angle = 270;
+    var radiusX = 200;
+    var radiusY = 100;
+    var x = 0;
+    var y = 0;
+
+    animate();
+
+    function animate () {
+      requestAnimationFrame(animate);
+      renderer.render(stage);
+
+      x = graphics.x + Math.sin(angle * Math.PI / 180) * radiusX;
+      y = graphics.y + Math.cos(angle * Math.PI / 180) * radiusY;
+
+      line.lineStyle(10, 0xFFBD01, 1);
+      line.lineTo(x, y);
+
+      angle += 1;
+    }
+  }());
+</script>
